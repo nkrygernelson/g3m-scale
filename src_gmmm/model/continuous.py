@@ -126,7 +126,9 @@ class ContinuousDiffusion(nn.Module):
 
         drift_dt = self.sde.reverse_drift(t=t, zt=x_t, score=score) * dt
         diff_dt = (
-            self.sde.diffusion(t) * torch.randn_like(x_t) * torch.sqrt(torch.abs(dt))
+            self.sde.diffusion(t)
+            * self.distribution.sample(index)
+            * torch.sqrt(torch.abs(dt))
         )
 
         return x_t + drift_dt + diff_dt
