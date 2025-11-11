@@ -153,7 +153,15 @@ class EquivariantDiffusion(nn.Module):
         else:
             return samples
 
-    def reverse_step_em(self, t, dt, pos_t, h_t, node_index, edge_node_index):
+    def reverse_step_em(
+        self,
+        t: torch.Tensor,
+        dt: torch.Tensor,
+        pos_t: torch.Tensor,
+        h_t: torch.Tensor,
+        node_index: torch.Tensor,
+        edge_node_index: torch.Tensor,
+    ):
 
         # get NN predictions
         preds = self.parameterization.forward(
@@ -166,12 +174,12 @@ class EquivariantDiffusion(nn.Module):
         # reverse step on each modality
         if self.diffusion_pos:
             pos_t = self.diffusion_pos.reverse_step(
-                t=t[node_index], x_t=pos_t, pred=preds["pos"], dt=dt
+                t=t[node_index], x_t=pos_t, pred=preds["pos"], dt=dt, index=node_index
             )
 
         if self.diffusion_h:
             h_t = self.diffusion_h.reverse_step(
-                t=t[node_index], x_t=h_t, pred=preds["h"], dt=dt
+                t=t[node_index], x_t=h_t, pred=preds["h"], dt=dt, index=node_index
             )
 
         return pos_t, h_t
