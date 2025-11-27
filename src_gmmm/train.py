@@ -1,6 +1,8 @@
 from typing import List, Optional, Tuple
+import functools
 
 import hydra
+import torch
 import pytorch_lightning as pl
 from omegaconf import DictConfig
 from pytorch_lightning import Callback, Trainer
@@ -12,6 +14,19 @@ log = utils.get_pylogger(__name__)
 
 
 def train(cfg: DictConfig) -> Tuple[dict, dict]:
+    # This is a workaround for a security feature in recent PyTorch versions.
+    # We are monkey-patching torch.load to revert to the old, less secure behavior
+    # where `weights_only` was False by default.
+    #
+    # WARNING: Only do this if you trust the source of your data files.
+    # Unpickling arbitrary files can lead to code execution.
+    original_torch_load = torch.load
+    @functools.wraps(original_torch_load)
+    def new_torch_load(*args, **kwargs):
+        kwargs.setdefault('weights_only', False)
+        return original_torch_load(*args, **kwargs)
+    torch.load = new_torch_load
+
     if cfg.get("seed"):
         pl.seed_everything(cfg.seed, workers=True)
 
@@ -77,6 +92,9 @@ def train(cfg: DictConfig) -> Tuple[dict, dict]:
 
 @hydra.main(config_path="../configs", version_base="1.3")
 def main(cfg: DictConfig) -> Optional[float]:
+    # The monkey-patch is applied in train(), so we just call it.
+    # Note: if torch.load was called before train(), this patch would not apply to it.
+
     # train the model
     metric_dict, _ = train(cfg)
 

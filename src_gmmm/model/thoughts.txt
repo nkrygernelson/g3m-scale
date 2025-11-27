@@ -1,0 +1,120 @@
+start with layers:
+struct:
+f: cosine cutoff
+    return edge_distances when smaller than cutoff
+class: FourierEmbedding
+    Random Fourier features
+    generates "cos" and "sin" features from input.
+    is trainable but can be toggled
+    way to embed time.
+    samples from normal, creates a weight matrix with random samples
+    Use matrix to project x onto large vector space.
+    uses projection to generate equal amounts cos and sine features.
+
+
+class: EdgeEmbedding
+
+
+class: EquivLayerNorm
+
+---
+File Encoder
+class: InteractionLayer
+define node dim
+define W (matrix?) [edge_dim, 3*node_dim]
+msg_nn:
+    Linear
+    SiLU
+    Linear(node, 3*node_dim)
+
+edge_inference_nn:
+    Linear
+
+edge_node_index (what does this look like)
+probably a entry from an array cotaining all of the edge, 
+node pairs
+apply the layer norm to the node_states_s the node states v, the node index
+
+What does it do?
+Linear W: edge_states -> W (dim: 3*node_dim)
+msg_nn: node_states_s -> phi (3*node_dim) 
+Wphi = W*phi[src_idx]
+splitting to create phi_s, phi_vv, phi_vs
+edge (new edge) = edge_inference_nn(phi_s)
+messages_s = phi_s*edge
+messages_v = 
+(node_states_v[srx_idx]*phi_vv[:, None, :]
+            +phi_vs[:, None]*unit_vectors[..., None])*edge[..., None]
+reduced_messages_s = scatter_sum(
+    messages_s, dst_idx, dim=0 out.torch.zeros_like(node_states_s)
+
+)
+reduced_messages_v = scatter_sum(
+    messages_v, dst_idx, dim=0, out=torch.zeros_like(node_states_v)
+)
+return node_states_s+reduced_messages_s,
+        node_states_v+reduced_messages_v
+
+class UpdateLayer:
+    UV = Lienar(Node_dim, 2*node_dim)
+    UV_nn = linear(2*node_dim, node_dim), Silu, 
+        linear(node_dim, 3*node_dim)
+    forward()
+        node_states -> 3*node_dim
+    Uv, Vv = split
+    Vv_norm = torch.sqrt(
+        torch.sum(Vv*2, dim=1)
+    )
+    Uv_nn(cat(Vv_norm, node_states_s))
+    a_vv, a_sv, a_ss
+    inner.prod(sum(dotprod(Uv*Vv)))
+    update s and v 
+    delta_s = a_ss+a_sv*inner_prod
+    delta_v = a_vv[:, None, :]*Uv
+    return noe_states_s+delta_s, node_states_v+delta_v
+
+    what could s and v be? position and atom type?
+    can't be atom type because it is sepcified, not diffused.
+    maybe the update layer is only updating the node features but then what are s and v?
+    Two different features? position and ....
+    Alos what is the indexing?
+
+class EdgdeLayer:
+
+class EquivEncoder
+    this has got to be the big one.
+    init:
+        hidden dim
+        time_embedding
+        edge_embedding
+        num_layers: 4
+        h_input_dim: 100
+        smooth_h; True false
+    node_time pproj:
+        Linear(hidden_dim+time_embedding dim, hidden dim)
+    edge_embedding
+    self.interactions = nn.ModeuleList(
+        [
+            InteractionLayer(hidden_dim, edge_embedding.out_features)
+            for _ in range(num_layers)
+        ]
+    )
+    self.updates = nn.ModuleList(
+        [
+            UpdateLayer(hidden_dim)
+            for _ in range(num_layers)
+        ]
+    )
+    forward():
+       t= self.time_embedding[t]
+       t_per_atom = t[node_index]
+       so t is some kind of a tensor 
+       [embedding_node_1, embedding_node_2]
+       node_states_v = pos.new_zeroes
+
+       edge_embedding, unit_vectors = self.edge_embedding.forward(
+        positions, edge_index=edge_node_index
+       )
+       for interaction, update:
+       ...
+       return states = {"s": node_states_s, "v": node_states_v}
