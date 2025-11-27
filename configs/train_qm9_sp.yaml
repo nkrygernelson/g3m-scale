@@ -1,5 +1,5 @@
-ckpt_path: "/home/scratch3/frjc/g3m-logs/qm9/runs/2025-11-07_10-05-38/checkpoints/last.ckpt"
-
+#ckpt_path: "/home/scratch3/frjc/g3m-logs/qm9/runs/2025-11-07_10-05-38/checkpoints/last.ckpt"
+ckpt_path: null
 seed: 42
 project: "g3m"
 tags:
@@ -29,7 +29,7 @@ parameterization: "x0"
 
 # validation
 monitor_metric: "val/molecule_stable"
-val_every_n_epochs: 5
+val_every_n_epochs: 2
 
 
 datamodule:
