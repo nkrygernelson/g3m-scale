@@ -1,9 +1,10 @@
 from typing import Optional
 
 import torch
+from torch_geometric.nn import knn_graph
 import torch.nn as nn
-from torch_scatter import scatter_sum
-
+from torch_scatter import scatter_sum, scatter_mean
+from ..nn_coarsen.clustering import voxel_clustering
 from ..nn.layers import EdgeEmbedding, EquivLayerNorm, FourierEmbedding
 
 
@@ -198,15 +199,49 @@ class EquivEncoder(nn.Module):
             interaction,
             update,
         ) in zip(self.interactions, self.updates):
-            node_states_s, node_states_v = interaction.forward(
-                node_states_s=node_states_s,
-                node_states_v=node_states_v,
-                edge_states=edge_states,
-                unit_vectors=unit_vectors,
-                node_index=node_index,
-                edge_node_index=edge_node_index,
+            #Coarsening
+            n_clusters_target = 10 #should come from the scheduler
+            k_t = 10 #should come from the scheduler
+            cluster_idx, n_new_nodes = voxel_clustering(pos, n_clusters_target)
+            #create the super nodes by an avg_pool
+            super_s = scatter_mean(node_states_s, cluster_idx, dim=0)
+            super_v = scatter_mean(node_states_v, cluster_idx, dim=0)
+            super_pos = scatter_mean(pos, cluster_idx, dim=0)
+            super_batch = scatter_mean(node_index.float(), cluster_idx, dim=0).long()
+            super_edge_index = knn_graph(super_pos, k=k_t, batch=super_batch)
+            super_edge_states, super_unit_vectors = self.edge_embedding(
+                positions=super_pos, edge_index=super_edge_index
             )
-            node_states_s, node_states_v = update(node_states_s, node_states_v)
+            #update the supernodes with the interaction steps
+            new_super_s, new_super_v = interaction(
+                node_states_s=super_s,
+                node_states_v=super_v,
+                edge_states=super_edge_states,
+                unit_vectors=super_unit_vectors,
+                node_index=super_batch,
+                edge_node_index=super_edge_index,
+                )
+            #Uncoarsening
+            ######
+            #we define the changes in the node states
+            delta_s = new_super_s - super_s
+            delta_v = new_super_v - super_v
+            super_s = new_super_s
+            super_v = new_super_v
+            #update the node states from the supernodes updates
+            node_states_s = node_states_s + delta_s[cluster_idx]
+            node_states_v = node_states_v + delta_v[cluster_idx]
+            #update the supernode states based on the self interaction.
+            old_super_s = super_s
+            old_super_v = super_v
+            
+            super_s, super_v = update(super_s, super_v)
+
+            delta_s_upd = super_s - old_super_s
+            delta_v_upd = super_v - old_super_v
+            #update the nodoes again
+            node_states_s = node_states_s + delta_s_upd[cluster_idx]
+            node_states_v = node_states_v + delta_v_upd[cluster_idx]
 
         states = {"s": node_states_s, "v": node_states_v}
 
