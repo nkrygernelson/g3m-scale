@@ -5,6 +5,7 @@ from torch_geometric.nn import knn_graph
 import torch.nn as nn
 from torch_scatter import scatter_sum, scatter_mean
 from ..nn_coarsen.clustering import voxel_clustering
+from ..nn_coarsen.schedule import linear_schedule
 from ..nn.layers import EdgeEmbedding, EquivLayerNorm, FourierEmbedding
 
 
@@ -200,12 +201,11 @@ class EquivEncoder(nn.Module):
             update,
         ) in zip(self.interactions, self.updates):
             #Coarsening
-            n_clusters_target = 10 #should come from the scheduler
-            k_t = 10 #should come from the scheduler
+            n_clusters_target, k_t = linear_schedule()#in progress
+
             cluster_idx, n_new_nodes = voxel_clustering(pos, n_clusters_target)
-            #create the super nodes by an avg_pool
-            super_s = scatter_mean(node_states_s, cluster_idx, dim=0)
-            super_v = scatter_mean(node_states_v, cluster_idx, dim=0)
+            #feature aggregation
+
             super_pos = scatter_mean(pos, cluster_idx, dim=0)
             super_batch = scatter_mean(node_index.float(), cluster_idx, dim=0).long()
             super_edge_index = knn_graph(super_pos, k=k_t, batch=super_batch)
