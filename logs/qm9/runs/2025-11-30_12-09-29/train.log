@@ -1,2 +1,0 @@
-[2025-11-30 12:09:29,370][__main__][INFO] - Instantiating datamodule <src_gmmm.data.datamodule.DataModule>
-[2025-11-30 12:10:02,323][__main__][INFO] - Instantiating lit_module <src_gmmm.lit.module.LitModule>
