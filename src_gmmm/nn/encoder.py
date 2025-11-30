@@ -128,6 +128,93 @@ class EdgeLayer(nn.Module):
         else:
             return self.edge_nn(concat_states)
 
+class FeatureAggregationLayer(InteractionLayer):
+    """
+    Fine nodes to coarse nodes
+    """
+    def __init__(self, node_dim: int, edge_dim: int):
+        # Initialize the parent class (InteractionLayer)
+        # This automatically sets up self.W, self.msg_nn, self.ln, etc.
+        super().__init__(node_dim, edge_dim)
+
+    def forward(
+        self,
+        node_states_s: torch.Tensor,
+        node_states_v: torch.Tensor,
+        edge_states: torch.Tensor,
+        unit_vectors: torch.Tensor,
+        node_index: torch.Tensor,
+        edge_node_index: torch.Tensor,
+        n_super_nodes: int
+    ):
+        src_idx, dst_idx = edge_node_index
+
+       
+        node_states_s, node_states_v = self.ln(
+            node_states_s, node_states_v, node_index
+        )
+
+        
+        W = self.W(edge_states)
+        phi = self.msg_nn(node_states_s)
+        Wphi = W * phi[src_idx] 
+        
+        phi_s, phi_vv, phi_vs = torch.split(Wphi, self.node_dim, dim=1)
+        edge = self.edge_inference_nn(phi_s)
+        
+        messages_s = phi_s * edge
+        messages_v = (
+            node_states_v[src_idx] * phi_vv[:, None, :]
+            + phi_vs[:, None, :] * unit_vectors[..., None]
+        ) * edge[..., None]
+
+        s_coarse = scatter_sum(messages_s, dst_idx, dim=0, dim_size=n_super_nodes)
+        v_coarse = scatter_sum(messages_v, dst_idx, dim=0, dim_size=n_super_nodes)
+
+
+        return s_coarse, v_coarse
+
+
+
+class SpreadingLayer(InteractionLayer):
+  
+    def __init__(self, hid_dim: int, edge_dim: int):
+        super().__init__(hid_dim, edge_dim)
+
+    def forward(
+        self,
+        s_coarse: torch.Tensor,
+        v_coarse: torch.Tensor,       
+        edge_states: torch.Tensor,    
+        unit_vectors: torch.Tensor,   
+        bipartite_edge_index: torch.Tensor, 
+        n_fine: int                  
+    ):
+        src_idx, dst_idx = bipartite_edge_index 
+
+        # 1. Transform Coarse Features
+        # We index s_coarse using src_idx (which points to the super-node)
+        # because there are N edges but only K super-nodes.
+        W = self.W(edge_states)
+        phi = self.msg_nn(s_coarse)
+        Wphi = W * phi[src_idx] 
+        
+        phi_s, phi_vv, phi_vs = torch.split(Wphi, self.node_dim, dim=1)
+        edge_gate = self.edge_inference_nn(phi_s)
+
+        # 2. Construct Messages
+        msg_s = phi_s * edge_gate
+        msg_v = (
+            v_coarse[src_idx] * phi_vv[:, None, :] 
+            + phi_vs[:, None, :] * unit_vectors[..., None]
+        ) * edge_gate[..., None]
+
+        # 3. SPREAD (Scatter Sum into Fine Nodes)
+        # Output size is n_fine (N)
+        s_fine = scatter_sum(msg_s, dst_idx, dim=0, dim_size=n_fine)
+        v_fine = scatter_sum(msg_v, dst_idx, dim=0, dim_size=n_fine)
+
+        return s_fine, v_fine
 
 class EquivEncoder(nn.Module):
     def __init__(
@@ -138,6 +225,7 @@ class EquivEncoder(nn.Module):
         num_layers: int = 4,
         h_input_dim: int = 100,
         smooth_h: bool = True,
+        k:int=5
     ):
         super(EquivEncoder, self).__init__()
 
@@ -174,6 +262,10 @@ class EquivEncoder(nn.Module):
         self.updates = nn.ModuleList(
             [UpdateLayer(hidden_dim) for _ in range(num_layers)]
         )
+        self.aggregators = nn.ModuleList([FeatureAggregationLayer(hidden_dim, edge_embedding.out_features)for _ in range(num_layers)])
+        self.spreaders = nn.ModuleList([SpreadingLayer(hidden_dim, edge_embedding.out_features)for _ in range(num_layers)])
+        self.k = k
+
 
     def forward(
         self,
@@ -186,63 +278,116 @@ class EquivEncoder(nn.Module):
 
         t = self.time_embedding(t)
         t_per_atom = t[node_index]
-
+        N_total = pos.shape[0]
         node_states_v = pos.new_zeros((*pos.shape, self.hidden_dim))
         node_states_s = self.node_embedding(h)
         node_states_s = torch.cat([node_states_s, t_per_atom], dim=1)
         node_states_s = self.node_time_projection(node_states_s)
+        list_super_pos = []
+        list_super_batch = []
+        list_cluster_idx = [] 
+        list_super_edge_index = []
+        global_super_node_offset = 0
+        batch_ids = node_index.unique()
 
-        edge_states, unit_vectors = self.edge_embedding.forward(
-            positions=pos, edge_index=edge_node_index
+        for b_id in batch_ids:
+            mask = (node_index==b_id)
+            pos_i = pos[mask]
+            node_index_i = node_index[mask]
+            t_i = t[node_index_i].mean() #should be the same across the batch right
+            n_i = pos_i.shape[0]
+            n_cg, k_i = linear_schedule(t=t_i,k=self.k, N=n_i)
+            cluster_idx_i, n_new = voxel_clustering(pos_i, n_cg)
+            super_pos_i = scatter_mean(pos_i, cluster_idx_i, dim=0)
+            edge_index_i = knn_graph(super_pos_i, k=k_i)
+            #reindex
+            global_cluster_idx = cluster_idx_i + global_super_node_offset
+            global_edge_index = edge_index_i + global_super_node_offset
+            list_super_pos.append(super_pos_i)
+            list_cluster_idx.append(global_cluster_idx)
+            list_super_edge_index.append(global_edge_index)
+            list_super_batch.append(torch.full((n_new,), b_id, device=pos.device))
+            
+            global_super_node_offset += n_new
+
+        super_pos = torch.cat(list_super_pos, dim=0)
+        super_edge_index = torch.cat(list_super_edge_index, dim=1)
+        #keeps track of whch batch super_nodes are in
+        super_batch = torch.cat(list_super_batch, dim=0)
+        #keeps track of which cluster each nodes are in
+        super_cluster_idx = torch.cat(list_cluster_idx, dim=0)
+        #adds the super node position to the list of positions
+        all_pos = torch.cat([pos, super_pos], dim=0)
+        #total amount of nodes and super nodes
+        N_total = pos.shape[0]
+        #we go through every node and based on our construction the destination (the supernode is n_total 
+        # elements away from the node's cluster index)
+        #src are all the nodes indices from 0 to N-1
+        src = torch.arange(N_total, device = pos.device)
+        #for every one of these nodes it has the the index of the super_node
+        #so at dst[individual ndoe index] -> super_node index
+        dst = super_cluster_idx+N_total
+        #creates two rows src, dst as compatible with edge_node_index
+        #these edges have no features yet so we  must ccompute them
+        edge_index_shifted = torch.stack([src, dst], dim=0)
+        #we use these indices to look for distances in all_pos so we muse the shifted index
+        fine_super_edge_state, fine_super_unit_vec = self.edge_embedding(
+            positions=all_pos, 
+            edge_index=edge_index_shifted
         )
-
+        #create edges where the node points to the super_node
+        edge_index = torch.stack([src, super_cluster_idx])
+        #edge_index for calcualtion of the super_node to fine_node edge feature
+        down_edge_index_shifted = torch.stack([dst, src], dim=0)
+        
+        super_fine_edge_state, super_fine_unit_vec = self.edge_embedding(
+            positions=all_pos, 
+            edge_index=down_edge_index_shifted
+        )
+        down_edge_index = torch.stack([super_cluster_idx, src], dim=0)
         for (
             interaction,
             update,
-        ) in zip(self.interactions, self.updates):
-            #Coarsening
-            n_clusters_target, k_t = linear_schedule()#in progress
-
-            cluster_idx, n_new_nodes = voxel_clustering(pos, n_clusters_target)
-            #feature aggregation
-
-            super_pos = scatter_mean(pos, cluster_idx, dim=0)
-            super_batch = scatter_mean(node_index.float(), cluster_idx, dim=0).long()
-            super_edge_index = knn_graph(super_pos, k=k_t, batch=super_batch)
-            super_edge_states, super_unit_vectors = self.edge_embedding(
-                positions=super_pos, edge_index=super_edge_index
-            )
-            #update the supernodes with the interaction steps
-            new_super_s, new_super_v = interaction(
-                node_states_s=super_s,
-                node_states_v=super_v,
-                edge_states=super_edge_states,
-                unit_vectors=super_unit_vectors,
-                node_index=super_batch,
-                edge_node_index=super_edge_index,
-                )
-            #Uncoarsening
-            ######
-            #we define the changes in the node states
-            delta_s = new_super_s - super_s
-            delta_v = new_super_v - super_v
-            super_s = new_super_s
-            super_v = new_super_v
-            #update the node states from the supernodes updates
-            node_states_s = node_states_s + delta_s[cluster_idx]
-            node_states_v = node_states_v + delta_v[cluster_idx]
-            #update the supernode states based on the self interaction.
-            old_super_s = super_s
-            old_super_v = super_v
+            aggregator,
+            spreader
+        ) in zip(self.interactions, self.updates, self.aggregators, self.spreaders):
             
-            super_s, super_v = update(super_s, super_v)
-
-            delta_s_upd = super_s - old_super_s
-            delta_v_upd = super_v - old_super_v
-            #update the nodoes again
-            node_states_s = node_states_s + delta_s_upd[cluster_idx]
-            node_states_v = node_states_v + delta_v_upd[cluster_idx]
-
+            #this is essentially the coarsening
+            super_s, super_v = aggregator(
+                node_states_s=node_states_s,
+                node_states_v=node_states_v,
+                edge_states=fine_super_edge_state,
+                unit_vectors=fine_super_unit_vec,
+                node_index = node_index,
+                edge_node_index=edge_index,
+                n_super_nodes = super_pos.shape[0]
+            )
+        
+            #we still have to do message passing and updates between the supernodes
+            #we havent computed the inter supernode connections yet
+            super_edge_state, super_unit_vec = self.edge_embedding(
+                positions=super_pos, 
+                edge_index=super_edge_index
+            )
+            old_super_s, old_super_v = super_s, super_v
+            super_s, super_v = interaction(node_states_s=super_s,
+                                                 node_states_v=super_v,
+                                                 edge_states= super_edge_state,
+                                                 unit_vectors=super_unit_vec,
+                                                 node_index=super_batch,
+                                                 edge_node_index= super_edge_index,  
+            )
+            delta_super_s = super_s-old_super_s
+            delta_super_v = super_v-old_super_v
+            delta_node_states_s, delta_node_states_v = spreader(s_coarse=delta_super_s,
+            v_coarse=delta_super_v,
+            edge_states=super_fine_edge_state,
+            unit_vectors=super_fine_unit_vec,
+            bipartite_edge_index=down_edge_index,
+            n_fine = N_total)
+            node_states_s=node_states_s+delta_node_states_s
+            node_states_v=node_states_v+delta_node_states_v
+            node_states_s, node_states_v = update(node_states_s, node_states_v)           
         states = {"s": node_states_s, "v": node_states_v}
 
         return states
