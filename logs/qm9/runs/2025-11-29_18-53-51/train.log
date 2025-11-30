@@ -1,0 +1,10 @@
+[2025-11-29 18:53:51,654][__main__][INFO] - Instantiating datamodule <src_gmmm.data.datamodule.DataModule>
+[2025-11-29 18:54:05,451][__main__][INFO] - Instantiating lit_module <src_gmmm.lit.module.LitModule>
+[2025-11-29 18:54:05,981][__main__][INFO] - Instantiating callbacks...
+[2025-11-29 18:54:05,981][src_gmmm.utils.utils][INFO] - Instantiating callback <pytorch_lightning.callbacks.ModelCheckpoint>
+[2025-11-29 18:54:05,986][src_gmmm.utils.utils][INFO] - Instantiating callback <src_gmmm.utils.callback.LogSampledAtomsCallback>
+[2025-11-29 18:54:05,992][__main__][INFO] - Instantiating loggers...
+[2025-11-29 18:54:05,992][src_gmmm.utils.utils][INFO] - Instantiating logger <pytorch_lightning.loggers.wandb.WandbLogger>
+[2025-11-29 18:54:07,996][__main__][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2025-11-29 18:54:08,019][__main__][INFO] - Logging hyperparameters!
+[2025-11-29 18:54:08,037][__main__][INFO] - Starting training!

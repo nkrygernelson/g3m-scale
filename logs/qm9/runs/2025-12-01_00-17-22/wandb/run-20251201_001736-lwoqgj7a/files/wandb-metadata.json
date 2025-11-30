@@ -1,0 +1,108 @@
+{
+    "os": "Linux-6.14.0-36-generic-x86_64-with-glibc2.39",
+    "python": "3.11.14",
+    "heartbeatAt": "2025-11-30T23:17:37.957717",
+    "startedAt": "2025-11-30T23:17:36.918088",
+    "docker": null,
+    "cuda": null,
+    "args": [
+        "-cn",
+        "train_qm9_sp"
+    ],
+    "state": "running",
+    "program": "/home/nico/code/g3m-scale/src_gmmm/train.py",
+    "codePath": "src_gmmm/train.py",
+    "git": {
+        "remote": "git@github.com:nkrygernelson/g3m-scale.git",
+        "commit": "5d930d2bfc02dadd305c9bc6d8a87ca36dec561d"
+    },
+    "email": "s215196@dtu.dk",
+    "root": "/home/nico/code/g3m-scale",
+    "host": "john",
+    "username": "nico",
+    "executable": "/home/nico/code/g3m-scale/.venv/bin/python",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2776.135333333333,
+        "min": 800.0,
+        "max": 4700.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3200.249,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3201.042,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 2908.99,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3199.97,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3199.981,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3199.401,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3200.05,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3200.377,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3201.404,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 3194.639,
+            "min": 800.0,
+            "max": 4700.0
+        },
+        {
+            "current": 800.0,
+            "min": 800.0,
+            "max": 4700.0
+        }
+    ],
+    "disk": {
+        "total": 109.47278213500977,
+        "used": 21.446426391601562
+    },
+    "gpu": "NVIDIA GeForce GTX 1060 6GB",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce GTX 1060 6GB",
+            "memory_total": 6442450944
+        }
+    ],
+    "memory": {
+        "total": 15.553638458251953
+    }
+}

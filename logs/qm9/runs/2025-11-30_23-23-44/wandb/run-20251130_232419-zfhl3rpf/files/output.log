@@ -1,0 +1,235 @@
+[2025-11-30 23:24:20,937][__main__][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2025-11-30 23:24:20,974][__main__][INFO] - Logging hyperparameters!
+[2025-11-30 23:24:21,035][__main__][INFO] - Starting training!
+Epoch 0:   0%|                               | 2/1563 [00:01<18:02,  1.44it/s, loss=nan, v_num=3rpf]
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name      | Type                 | Params
+---------------------------------------------------
+0 | model     | EquivariantDiffusion | 2.0 M
+1 | model_ema | AveragedModel        | 2.0 M
+---------------------------------------------------
+4.0 M     Trainable params
+0         Non-trainable params
+4.0 M     Total params
+15.874    Total estimated model params size (MB)
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:224: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 1: 100%|███████████████████████████▊| 1556/1563 [03:22<00:00,  7.68it/s, loss=nan, v_num=3rpf]
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:224: PossibleUserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+Epoch 1: 100%|████████████████████████████| 1563/1563 [03:23<00:00,  7.69it/s, loss=nan, v_num=3rpf]Using EMA Model.
+Validation DataLoader 0:   0%|                                                | 0/8 [00:00<?, ?it/s]
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4096. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1564it [04:25,  5.88it/s, loss=nan, v_num=3rpf]                                          Using EMA Model.
+Validation DataLoader 0:  12%|█████                                   | 1/8 [01:02<07:14, 62.03s/it]
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4105. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1565it [05:28,  4.77it/s, loss=nan, v_num=3rpf]            | 1/8 [01:02<07:14, 62.03s/it]
+Validation DataLoader 0:  25%|██████████                              | 2/8 [02:04<06:13, 62.25s/it]
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4183. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+  warning_cache.warn(
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4206. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1566it [06:31,  4.00it/s, loss=nan, v_num=3rpf]Using EMA Model.8 [02:04<06:13, 62.25s/it]
+Epoch 1: : 1567it [07:32,  3.47it/s, loss=nan, v_num=3rpf]Using EMA Model.8 [03:07<05:12, 62.43s/it]
+Validation DataLoader 0:  50%|████████████████████                    | 4/8 [04:08<04:08, 62.08s/it]
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4055. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.

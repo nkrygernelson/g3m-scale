@@ -138,6 +138,7 @@ class EquivEncoder(nn.Module):
         num_layers: int = 4,
         h_input_dim: int = 100,
         smooth_h: bool = True,
+        k:int=5
     ):
         super(EquivEncoder, self).__init__()
 
@@ -174,6 +175,9 @@ class EquivEncoder(nn.Module):
         self.updates = nn.ModuleList(
             [UpdateLayer(hidden_dim) for _ in range(num_layers)]
         )
+        
+        self.k = k
+
 
     def forward(
         self,
@@ -186,63 +190,74 @@ class EquivEncoder(nn.Module):
 
         t = self.time_embedding(t)
         t_per_atom = t[node_index]
-
         node_states_v = pos.new_zeros((*pos.shape, self.hidden_dim))
         node_states_s = self.node_embedding(h)
         node_states_s = torch.cat([node_states_s, t_per_atom], dim=1)
         node_states_s = self.node_time_projection(node_states_s)
+        list_super_pos = []
+        list_super_batch = []
+        list_cluster_idx = [] 
+        list_super_edge_index = []
+        global_super_node_offset = 0
+        batch_ids = node_index.unique()
 
-        edge_states, unit_vectors = self.edge_embedding.forward(
-            positions=pos, edge_index=edge_node_index
-        )
+        for b_id in batch_ids:
+            mask = (node_index==b_id)
+            pos_i = pos[mask]
+            node_index_i = node_index[mask]
+            t_i = t[node_index_i].mean() #should be the same across the batch right
+            n_i = pos_i.shape[0]
+            n_cg, k_i = linear_schedule(t=t_i,k=self.k, N=n_i)
+            cluster_idx_i, n_new = voxel_clustering(pos_i, n_cg)
+            super_pos_i = scatter_mean(pos_i, cluster_idx_i, dim=0)
+            edge_index_i = knn_graph(super_pos_i, k=k_i)
+            #reindex
+            global_cluster_idx = cluster_idx_i + global_super_node_offset
+            global_edge_index = edge_index_i + global_super_node_offset
+            list_super_pos.append(super_pos_i)
+            list_cluster_idx.append(global_cluster_idx)
+            list_super_edge_index.append(global_edge_index)
+            list_super_batch.append(torch.full((n_new,), b_id, device=pos.device))
+            
+            global_super_node_offset += n_new
 
+        super_pos = torch.cat(list_super_pos, dim=0)
+        super_edge_index = torch.cat(list_super_edge_index, dim=1)
+        #keeps track of whch batch super_nodes are in
+        super_batch = torch.cat(list_super_batch, dim=0)
+        #keeps track of which cluster each nodes are in
+        super_cluster_idx = torch.cat(list_cluster_idx, dim=0)
+        
         for (
             interaction,
             update,
-        ) in zip(self.interactions, self.updates):
-            #Coarsening
-            n_clusters_target, k_t = linear_schedule()#in progress
-
-            cluster_idx, n_new_nodes = voxel_clustering(pos, n_clusters_target)
-            #feature aggregation
-
-            super_pos = scatter_mean(pos, cluster_idx, dim=0)
-            super_batch = scatter_mean(node_index.float(), cluster_idx, dim=0).long()
-            super_edge_index = knn_graph(super_pos, k=k_t, batch=super_batch)
-            super_edge_states, super_unit_vectors = self.edge_embedding(
-                positions=super_pos, edge_index=super_edge_index
-            )
-            #update the supernodes with the interaction steps
-            new_super_s, new_super_v = interaction(
-                node_states_s=super_s,
-                node_states_v=super_v,
-                edge_states=super_edge_states,
-                unit_vectors=super_unit_vectors,
-                node_index=super_batch,
-                edge_node_index=super_edge_index,
-                )
-            #Uncoarsening
-            ######
-            #we define the changes in the node states
-            delta_s = new_super_s - super_s
-            delta_v = new_super_v - super_v
-            super_s = new_super_s
-            super_v = new_super_v
-            #update the node states from the supernodes updates
-            node_states_s = node_states_s + delta_s[cluster_idx]
-            node_states_v = node_states_v + delta_v[cluster_idx]
-            #update the supernode states based on the self interaction.
-            old_super_s = super_s
-            old_super_v = super_v
+        ) in zip(self.interactions, self.updates,):
             
-            super_s, super_v = update(super_s, super_v)
+            #this is essentially the coarsening
+            super_s = scatter_mean(node_states_s, super_cluster_idx, dim=0)
+            super_v = scatter_mean(node_states_v, super_cluster_idx, dim=0)
+            super_edge_state, super_unit_vec = self.edge_embedding(
+                positions=super_pos, 
+                edge_index=super_edge_index
+            )
+            old_super_s, old_super_v = super_s, super_v
+            super_s, super_v = interaction(node_states_s=super_s,
+                                                 node_states_v=super_v,
+                                                 edge_states= super_edge_state,
+                                                 unit_vectors=super_unit_vec,
+                                                 node_index=super_batch,
+                                                 edge_node_index= super_edge_index,  
+            )
+            delta_super_s = super_s-old_super_s
+            delta_super_v = super_v-old_super_v
+            #list that maps every supernode index to a coarsenode
 
-            delta_s_upd = super_s - old_super_s
-            delta_v_upd = super_v - old_super_v
-            #update the nodoes again
-            node_states_s = node_states_s + delta_s_upd[cluster_idx]
-            node_states_v = node_states_v + delta_v_upd[cluster_idx]
+            delta_node_states_s = delta_super_s[super_cluster_idx]
+            delta_node_states_v = delta_super_v[super_cluster_idx]
 
+            node_states_s=node_states_s+delta_node_states_s
+            node_states_v=node_states_v+delta_node_states_v
+            node_states_s, node_states_v = update(node_states_s, node_states_v)           
         states = {"s": node_states_s, "v": node_states_v}
 
         return states

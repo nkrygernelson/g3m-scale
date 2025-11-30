@@ -1,0 +1,291 @@
+[2025-11-30 23:36:19,208][__main__][INFO] - Instantiating trainer <pytorch_lightning.Trainer>
+[2025-11-30 23:36:19,230][__main__][INFO] - Logging hyperparameters!
+[2025-11-30 23:36:19,247][__main__][INFO] - Starting training!
+Epoch 0:   0%|                               | 6/1563 [00:01<05:30,  4.72it/s, loss=nan, v_num=ru6x]
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+  | Name      | Type                 | Params
+---------------------------------------------------
+0 | model     | EquivariantDiffusion | 2.0 M
+1 | model_ema | AveragedModel        | 2.0 M
+---------------------------------------------------
+4.0 M     Trainable params
+0         Non-trainable params
+4.0 M     Total params
+15.874    Total estimated model params size (MB)
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:224: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 1: 100%|████████Using EMA Model.████| 1563/1563 [03:09<00:00,  8.26it/s, loss=nan, v_num=ru6x]
+ ... (more hidden) ...
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/connectors/data_connector.py:224: PossibleUserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 12 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4096. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1564it [04:06,  6.34it/s, loss=nan, v_num=ru6x]                                          Using EMA Model.
+ ... (more hidden) ...
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4105. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1565it [05:07,  5.10it/s, loss=nan, v_num=ru6x]Using EMA Model.
+ ... (more hidden) ...
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4183. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1566it [06:08,  4.25it/s, loss=nan, v_num=ru6x]Using EMA Model.
+ ... (more hidden) ...
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4206. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1567it [07:06,  3.67it/s, loss=nan, v_num=ru6x]Using EMA Model.
+ ... (more hidden) ...
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4055. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1568it [08:05,  3.23it/s, loss=nan, v_num=ru6x]Using EMA Model.
+ ... (more hidden) ...
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4139. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1569it [09:04,  2.88it/s, loss=nan, v_num=ru6x]
+ ... (more hidden) ...
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4250. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1570it [10:04,  2.60it/s, loss=nan, v_num=ru6x]
+ ... (more hidden) ...
+/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/data.py:85: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 4189. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+Epoch 1: : 1571it [11:04,  2.36it/s, loss=nan, v_num=ru6x]
+ ... (more hidden) ...
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/home/nico/code/g3m-scale/src_gmmm/train.py", line 99, in main
+    metric_dict, _ = train(cfg)
+                     ^^^^^^^^^^
+  File "/home/nico/code/g3m-scale/src_gmmm/train.py", line 65, in train
+    trainer.fit(
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 603, in fit
+    call._call_and_handle_interrupt(
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/call.py", line 38, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 645, in _fit_impl
+    self._run(model, ckpt_path=self.ckpt_path)
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1098, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1177, in _run_stage
+    self._run_train()
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1200, in _run_train
+    self.fit_loop.run()
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/loops/loop.py", line 199, in run
+    self.advance(*args, **kwargs)
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/loops/fit_loop.py", line 267, in advance
+    self._outputs = self.epoch_loop.run(self._data_fetcher)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.on_advance_end()
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 251, in on_advance_end
+    self._run_validation()
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/loops/epoch/training_epoch_loop.py", line 310, in _run_validation
+    self.val_loop.run()
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/loops/loop.py", line 206, in run
+    output = self.on_run_end()
+             ^^^^^^^^^^^^^^^^^
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 184, in on_run_end
+    self._on_evaluation_epoch_end()
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 293, in _on_evaluation_epoch_end
+    self.trainer._call_callback_hooks(hook_name)
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/pytorch_lightning/trainer/trainer.py", line 1380, in _call_callback_hooks
+    fn(self, self.lightning_module, *args, **kwargs)
+  File "/home/nico/code/g3m-scale/src_gmmm/utils/callback.py", line 112, in on_validation_epoch_end
+    fig = make_atoms_grid(self.atoms_lst[-idx:])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nico/code/g3m-scale/src_gmmm/utils/callback.py", line 39, in make_atoms_grid
+    plot_atoms(atoms, ax)
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/ase/visualize/plot.py", line 88, in plot_atoms
+    Matplotlib(atoms, ax, **parameters).write()
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/ase/visualize/plot.py", line 21, in write
+    self.ax.set_xlim(0, self.w)
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/matplotlib/axes/_base.py", line 3812, in set_xlim
+    return self.xaxis._set_lim(left, right, emit=emit, auto=auto)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/matplotlib/axis.py", line 1217, in _set_lim
+    v1 = self.axes._validate_converted_limits(v1, self.convert_units)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nico/code/g3m-scale/.venv/lib/python3.11/site-packages/matplotlib/axes/_base.py", line 3733, in _validate_converted_limits
+    raise ValueError("Axis limits cannot be NaN or Inf")
+ValueError: Axis limits cannot be NaN or Inf
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

@@ -1,0 +1,717 @@
+2025-11-29 18:57:14,331 INFO    StreamThr :13988 [internal.py:wandb_internal():87] W&B internal server running at pid: 13988, started at: 2025-11-29 18:57:14.330770
+2025-11-29 18:57:14,332 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status
+2025-11-29 18:57:14,333 INFO    WriterThread:13988 [datastore.py:open_for_write():85] open: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/run-g63oui09.wandb
+2025-11-29 18:57:14,334 DEBUG   SenderThread:13988 [sender.py:send():336] send: header
+2025-11-29 18:57:14,336 DEBUG   SenderThread:13988 [sender.py:send():336] send: run
+2025-11-29 18:57:14,337 INFO    SenderThread:13988 [sender.py:_maybe_setup_resume():722] checking resume status for None/g3m/g63oui09
+2025-11-29 18:57:15,153 INFO    SenderThread:13988 [dir_watcher.py:__init__():219] watching files in: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files
+2025-11-29 18:57:15,153 INFO    SenderThread:13988 [sender.py:_start_run_threads():1078] run started: g63oui09 with start time 1764439034.330737
+2025-11-29 18:57:15,153 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:15,153 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: check_version
+2025-11-29 18:57:15,154 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:15,154 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: check_version
+2025-11-29 18:57:15,205 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: run_start
+2025-11-29 18:57:15,212 DEBUG   HandlerThread:13988 [system_info.py:__init__():31] System info init
+2025-11-29 18:57:15,212 DEBUG   HandlerThread:13988 [system_info.py:__init__():46] System info init done
+2025-11-29 18:57:15,212 INFO    HandlerThread:13988 [system_monitor.py:start():183] Starting system monitor
+2025-11-29 18:57:15,212 INFO    SystemMonitor:13988 [system_monitor.py:_start():147] Starting system asset monitoring threads
+2025-11-29 18:57:15,213 INFO    HandlerThread:13988 [system_monitor.py:probe():204] Collecting system info
+2025-11-29 18:57:15,213 INFO    SystemMonitor:13988 [interfaces.py:start():187] Started cpu monitoring
+2025-11-29 18:57:15,213 INFO    SystemMonitor:13988 [interfaces.py:start():187] Started disk monitoring
+2025-11-29 18:57:15,213 INFO    SystemMonitor:13988 [interfaces.py:start():187] Started gpu monitoring
+2025-11-29 18:57:15,214 INFO    SystemMonitor:13988 [interfaces.py:start():187] Started memory monitoring
+2025-11-29 18:57:15,215 INFO    SystemMonitor:13988 [interfaces.py:start():187] Started network monitoring
+2025-11-29 18:57:15,221 DEBUG   HandlerThread:13988 [system_info.py:probe():195] Probing system
+2025-11-29 18:57:15,222 DEBUG   HandlerThread:13988 [system_info.py:_probe_git():180] Probing git
+2025-11-29 18:57:15,226 DEBUG   HandlerThread:13988 [system_info.py:_probe_git():188] Probing git done
+2025-11-29 18:57:15,226 DEBUG   HandlerThread:13988 [system_info.py:probe():240] Probing system done
+2025-11-29 18:57:15,226 DEBUG   HandlerThread:13988 [system_monitor.py:probe():213] {'os': 'Linux-6.14.0-36-generic-x86_64-with-glibc2.39', 'python': '3.11.14', 'heartbeatAt': '2025-11-29T17:57:15.221769', 'startedAt': '2025-11-29T17:57:14.326893', 'docker': None, 'cuda': None, 'args': ('-cn', 'train_qm9_sp'), 'state': 'running', 'program': '/home/nico/code/g3m-scale/src_gmmm/train.py', 'codePath': 'src_gmmm/train.py', 'git': {'remote': 'git@github.com:nkrygernelson/g3m-scale.git', 'commit': '9704f82de3fdf8bccb43759e7244504b2566373a'}, 'email': None, 'root': '/home/nico/code/g3m-scale', 'host': 'john', 'username': 'nico', 'executable': '/home/nico/code/g3m-scale/.venv/bin/python', 'cpu_count': 6, 'cpu_count_logical': 12, 'cpu_freq': {'current': 4308.432333333333, 'min': 800.0, 'max': 4700.0}, 'cpu_freq_per_core': [{'current': 4296.236, 'min': 800.0, 'max': 4700.0}, {'current': 4388.052, 'min': 800.0, 'max': 4700.0}, {'current': 4397.843, 'min': 800.0, 'max': 4700.0}, {'current': 4397.922, 'min': 800.0, 'max': 4700.0}, {'current': 4388.842, 'min': 800.0, 'max': 4700.0}, {'current': 4399.131, 'min': 800.0, 'max': 4700.0}, {'current': 4399.999, 'min': 800.0, 'max': 4700.0}, {'current': 4302.432, 'min': 800.0, 'max': 4700.0}, {'current': 4330.713, 'min': 800.0, 'max': 4700.0}, {'current': 4397.883, 'min': 800.0, 'max': 4700.0}, {'current': 4384.769, 'min': 800.0, 'max': 4700.0}, {'current': 4298.964, 'min': 800.0, 'max': 4700.0}], 'disk': {'total': 109.47278213500977, 'used': 19.358631134033203}, 'gpu': 'NVIDIA GeForce GTX 1060 6GB', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce GTX 1060 6GB', 'memory_total': 6442450944}], 'memory': {'total': 15.553642272949219}}
+2025-11-29 18:57:15,226 INFO    HandlerThread:13988 [system_monitor.py:probe():214] Finished collecting system info
+2025-11-29 18:57:15,226 INFO    HandlerThread:13988 [system_monitor.py:probe():217] Publishing system info
+2025-11-29 18:57:15,226 DEBUG   HandlerThread:13988 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2025-11-29 18:57:15,226 DEBUG   HandlerThread:13988 [system_info.py:_save_pip():67] Saving pip packages done
+2025-11-29 18:57:15,226 INFO    HandlerThread:13988 [system_monitor.py:probe():219] Finished publishing system info
+2025-11-29 18:57:15,228 DEBUG   SenderThread:13988 [sender.py:send():336] send: files
+2025-11-29 18:57:15,228 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-metadata.json with policy now
+2025-11-29 18:57:15,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:57:15,231 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:57:15,489 DEBUG   SenderThread:13988 [sender.py:send():336] send: telemetry
+2025-11-29 18:57:15,489 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 18:57:15,489 DEBUG   SenderThread:13988 [sender.py:send():336] send: telemetry
+2025-11-29 18:57:15,489 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 18:57:15,489 WARNING SenderThread:13988 [sender.py:send_metric():1283] Seen metric with glob (shouldn't happen)
+2025-11-29 18:57:15,490 DEBUG   SenderThread:13988 [sender.py:send():336] send: config
+2025-11-29 18:57:15,490 DEBUG   SenderThread:13988 [sender.py:send():336] send: config
+2025-11-29 18:57:16,154 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_created():278] file/dir created: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:16,154 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_created():278] file/dir created: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:16,155 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_created():278] file/dir created: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/requirements.txt
+2025-11-29 18:57:16,155 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_created():278] file/dir created: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-metadata.json
+2025-11-29 18:57:16,204 INFO    wandb-upload_0:13988 [upload_job.py:push():138] Uploaded file /tmp/tmpvk9fijd9wandb/xgt2k278-wandb-metadata.json
+2025-11-29 18:57:18,154 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:18,160 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:18,161 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 18:57:18,161 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 18:57:18,161 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 18:57:18,161 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:18,161 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:18,161 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:19,154 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:19,340 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:57:20,154 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:20,416 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:20,417 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:20,417 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:20,417 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:21,154 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:22,155 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:22,739 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:22,739 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:22,739 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:22,740 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:23,155 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:24,155 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:24,380 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:57:24,963 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:24,963 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:24,963 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:24,964 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:25,155 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:26,155 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:27,131 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:27,131 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:27,132 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:27,133 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:27,156 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:28,156 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:29,361 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:29,362 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:29,362 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:29,363 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:29,408 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:57:30,161 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:30,161 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:30,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:57:30,231 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:57:31,568 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:31,569 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:31,569 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:31,569 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:32,162 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:32,162 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:33,705 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:33,712 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:33,712 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:33,712 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:34,162 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:34,162 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:34,420 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:57:36,000 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:36,001 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:36,001 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:36,001 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:36,163 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:36,163 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:38,163 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:38,334 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:38,334 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:38,334 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:38,335 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:39,163 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:39,446 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:57:40,163 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:40,969 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:40,970 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:40,970 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:40,970 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:41,164 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:42,164 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:43,466 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:43,466 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:43,466 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:43,466 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:44,164 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:44,164 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:44,475 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:57:45,165 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/config.yaml
+2025-11-29 18:57:45,230 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:57:45,231 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:57:46,165 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:46,197 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:46,198 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:46,198 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:46,198 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:47,165 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:48,165 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:48,912 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:48,913 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:48,913 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:48,913 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:49,165 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:49,762 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:57:50,166 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:51,355 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:51,356 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:51,356 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:51,356 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:52,166 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:52,166 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:53,827 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:53,828 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:53,828 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:53,828 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:54,167 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:54,167 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:54,789 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:57:56,167 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:56,262 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:56,263 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:56,263 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:56,263 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:57,167 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:58,167 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:57:58,738 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:57:58,740 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:57:58,740 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:57:58,740 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:57:59,168 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:57:59,824 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:00,168 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:00,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:58:00,231 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:58:01,222 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:01,223 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:01,223 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:01,223 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:02,168 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:02,169 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:03,881 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:03,882 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:03,882 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:03,882 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:04,169 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:04,169 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:04,850 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:06,169 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:06,388 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:06,389 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:06,389 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:06,389 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:07,170 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:08,170 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:08,818 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:08,819 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:08,819 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:08,819 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:09,170 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:09,860 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:10,170 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:11,397 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:11,398 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:11,398 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:11,398 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:12,171 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:12,171 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:13,880 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:13,880 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:13,880 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:13,880 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:14,180 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:14,180 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:14,884 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:15,215 DEBUG   SystemMonitor:13988 [system_monitor.py:_start():161] Starting system metrics aggregation loop
+2025-11-29 18:58:15,215 DEBUG   SenderThread:13988 [sender.py:send():336] send: stats
+2025-11-29 18:58:15,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:58:15,232 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:58:16,180 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:16,540 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:16,540 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:16,541 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:16,541 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:17,181 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:18,181 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:19,130 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:19,130 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:19,130 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:19,131 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:19,181 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:19,921 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:20,181 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:21,784 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:21,785 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:21,785 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:21,785 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:22,182 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:22,182 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:24,182 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:24,310 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:24,310 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:24,310 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:24,311 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:24,952 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:25,182 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:26,183 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:26,745 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:26,745 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:26,746 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:26,746 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:27,183 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:28,183 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:29,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:29,231 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:29,232 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:29,232 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:29,997 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:30,183 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:30,184 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:30,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:58:30,231 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:58:31,682 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:31,683 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:31,683 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:31,684 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:32,184 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:32,184 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:34,184 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:34,452 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:34,453 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:34,453 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:34,453 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:35,034 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:35,185 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:36,185 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:37,116 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:37,117 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:37,117 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:37,117 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:37,185 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:38,185 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:39,591 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:39,591 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:39,592 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:39,592 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:40,082 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:40,186 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:40,186 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:42,147 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:42,148 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:42,148 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:42,148 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:42,187 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:42,187 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:44,187 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:44,769 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:44,770 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:44,770 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:44,771 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:45,090 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:45,187 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:45,216 DEBUG   SenderThread:13988 [sender.py:send():336] send: stats
+2025-11-29 18:58:45,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:58:45,232 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:58:46,187 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:47,465 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:47,465 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:47,466 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:47,466 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:48,188 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:48,188 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:50,036 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:50,036 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:50,036 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:50,037 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:50,129 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:50,188 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:50,188 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:52,189 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:52,578 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:52,578 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:52,579 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:52,579 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:53,189 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:54,189 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:55,139 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:58:55,257 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:55,258 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:55,258 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:55,258 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:56,190 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:56,190 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:58:57,874 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:58:57,874 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:58:57,874 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:58:57,875 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:58:58,190 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:58:58,190 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:00,180 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:00,191 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:00,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:59:00,231 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:59:00,443 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:00,479 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:00,479 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:00,480 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:01,191 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:02,191 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:02,990 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:02,990 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:02,990 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:02,991 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:03,191 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:04,195 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:05,213 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:05,632 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:05,633 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:05,633 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:05,633 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:06,195 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:06,195 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:08,033 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:08,034 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:08,034 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:08,034 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:08,196 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:08,196 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:10,196 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:10,222 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:10,793 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:10,793 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:10,793 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:10,793 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:11,197 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:12,197 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:13,576 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:13,576 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:13,576 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:13,577 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:14,198 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:14,198 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:15,216 DEBUG   SenderThread:13988 [sender.py:send():336] send: stats
+2025-11-29 18:59:15,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:59:15,231 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:59:15,435 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:16,198 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:16,360 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:16,361 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:16,362 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:16,362 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:17,198 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:18,198 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:19,085 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:19,085 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:19,085 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:19,086 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:19,199 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:20,199 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:20,471 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:21,785 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:21,786 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:21,786 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:21,786 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:22,199 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:22,200 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:24,200 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:24,333 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:24,334 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:24,334 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:24,334 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:25,200 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:25,501 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:26,200 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:26,904 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:26,904 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:26,904 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:26,904 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:27,201 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:28,201 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:29,516 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:29,516 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:29,516 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:29,517 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:30,201 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:30,201 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:30,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:59:30,232 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:59:30,517 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:32,202 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:32,321 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:32,321 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:32,322 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:32,322 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:33,202 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:34,202 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:35,084 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:35,085 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:35,085 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:35,085 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:35,202 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:35,526 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:36,203 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:37,862 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:37,863 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:37,863 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:37,863 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:38,203 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:38,203 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:40,204 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:40,563 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:40,574 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:40,575 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:40,575 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:40,575 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:41,204 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:42,204 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:43,299 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:43,300 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:43,300 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:43,300 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:44,205 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:44,205 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:45,217 DEBUG   SenderThread:13988 [sender.py:send():336] send: stats
+2025-11-29 18:59:45,231 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 18:59:45,232 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 18:59:45,607 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:46,074 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:46,074 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:46,075 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:46,075 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:46,205 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:46,205 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:48,205 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:48,889 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:48,889 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:48,889 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:48,890 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:49,206 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:50,206 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:50,652 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:51,785 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:51,786 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:51,786 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:51,786 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:52,206 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:52,206 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:54,207 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:54,507 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 18:59:54,508 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 18:59:54,508 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 18:59:54,508 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 18:59:55,207 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 18:59:55,667 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 18:59:56,207 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 18:59:58,207 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:00:00,232 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 19:00:00,232 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 19:00:01,486 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:06,209 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:00:06,986 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:11,986 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:15,217 DEBUG   SenderThread:13988 [sender.py:send():336] send: stats
+2025-11-29 19:00:15,232 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 19:00:15,232 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 19:00:16,211 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:00:17,459 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:22,460 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:24,213 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:00:27,714 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:30,232 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 19:00:30,232 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 19:00:33,562 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:34,215 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:00:38,562 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:42,217 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:00:44,380 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:45,218 DEBUG   SenderThread:13988 [sender.py:send():336] send: stats
+2025-11-29 19:00:45,232 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 19:00:45,232 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 19:00:49,728 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:50,220 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:00:54,729 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:00:58,222 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:01:00,205 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:01:00,232 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: stop_status
+2025-11-29 19:01:00,232 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: stop_status
+2025-11-29 19:01:05,467 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:01:06,224 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:01:06,622 DEBUG   SenderThread:13988 [sender.py:send():336] send: files
+2025-11-29 19:01:06,623 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file media/images/val/images_62_121ab4c52b58af1b5d77.png with policy now
+2025-11-29 19:01:06,648 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 19:01:06,649 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,649 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,649 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,649 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,649 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,650 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,650 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 19:01:06,650 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 19:01:06,650 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 19:01:06,669 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 19:01:06,671 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,671 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,671 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,671 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,671 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,671 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,671 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,672 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,672 DEBUG   SenderThread:13988 [sender.py:send():336] send: metric
+2025-11-29 19:01:06,672 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 19:01:06,672 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 19:01:06,672 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 19:01:07,224 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 19:01:07,224 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_created():278] file/dir created: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/media/images/val/images_62_121ab4c52b58af1b5d77.png
+2025-11-29 19:01:07,224 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_created():278] file/dir created: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/media
+2025-11-29 19:01:07,224 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_created():278] file/dir created: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/media/images/val
+2025-11-29 19:01:07,225 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_created():278] file/dir created: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/media/images
+2025-11-29 19:01:07,879 INFO    wandb-upload_0:13988 [upload_job.py:push():138] Uploaded file /tmp/tmpvk9fijd9wandb/iecleat8-media/images/val/images_62_121ab4c52b58af1b5d77.png
+2025-11-29 19:01:08,224 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:01:08,292 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 19:01:08,292 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 19:01:08,293 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 19:01:08,293 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 19:01:08,744 INFO    wandb-upload_0:13988 [upload_job.py:push():138] Uploaded file /tmp/tmpvk9fijd9wandb/01wghk0w-media/images/val/images_62_121ab4c52b58af1b5d77.png
+2025-11-29 19:01:09,226 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 19:01:10,227 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:01:10,507 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:01:10,987 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: partial_history
+2025-11-29 19:01:10,988 DEBUG   SenderThread:13988 [sender.py:send():336] send: history
+2025-11-29 19:01:10,988 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: summary_record
+2025-11-29 19:01:10,988 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 19:01:11,227 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 19:01:12,227 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:01:13,516 DEBUG   SenderThread:13988 [sender.py:send():336] send: exit
+2025-11-29 19:01:13,516 INFO    SenderThread:13988 [sender.py:send_exit():559] handling exit code: 0
+2025-11-29 19:01:13,516 INFO    SenderThread:13988 [sender.py:send_exit():561] handling runtime: 238
+2025-11-29 19:01:13,516 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 19:01:13,516 INFO    SenderThread:13988 [sender.py:send_exit():567] send defer
+2025-11-29 19:01:13,516 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:13,516 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 0
+2025-11-29 19:01:13,517 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:13,517 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 0
+2025-11-29 19:01:13,517 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 1
+2025-11-29 19:01:13,517 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:13,517 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 1
+2025-11-29 19:01:13,517 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:13,517 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 1
+2025-11-29 19:01:13,517 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 2
+2025-11-29 19:01:13,517 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:13,517 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 2
+2025-11-29 19:01:13,517 INFO    HandlerThread:13988 [system_monitor.py:finish():193] Stopping system monitor
+2025-11-29 19:01:13,518 DEBUG   SystemMonitor:13988 [system_monitor.py:_start():168] Finished system metrics aggregation loop
+2025-11-29 19:01:13,518 DEBUG   SystemMonitor:13988 [system_monitor.py:_start():172] Publishing last batch of metrics
+2025-11-29 19:01:13,519 INFO    HandlerThread:13988 [interfaces.py:finish():199] Joined cpu monitor
+2025-11-29 19:01:13,519 INFO    HandlerThread:13988 [interfaces.py:finish():199] Joined disk monitor
+2025-11-29 19:01:13,574 INFO    HandlerThread:13988 [interfaces.py:finish():199] Joined gpu monitor
+2025-11-29 19:01:13,574 INFO    HandlerThread:13988 [interfaces.py:finish():199] Joined memory monitor
+2025-11-29 19:01:13,574 INFO    HandlerThread:13988 [interfaces.py:finish():199] Joined network monitor
+2025-11-29 19:01:13,575 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:13,575 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 2
+2025-11-29 19:01:13,575 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 3
+2025-11-29 19:01:13,575 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:13,575 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 3
+2025-11-29 19:01:13,578 DEBUG   SenderThread:13988 [sender.py:send():336] send: stats
+2025-11-29 19:01:13,579 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:13,579 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 3
+2025-11-29 19:01:13,579 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 4
+2025-11-29 19:01:13,579 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:13,579 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 4
+2025-11-29 19:01:13,579 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:13,579 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 4
+2025-11-29 19:01:13,579 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 5
+2025-11-29 19:01:13,579 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:13,579 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 5
+2025-11-29 19:01:13,580 DEBUG   SenderThread:13988 [sender.py:send():336] send: summary
+2025-11-29 19:01:13,580 INFO    SenderThread:13988 [sender.py:_save_file():1332] saving file wandb-summary.json with policy end
+2025-11-29 19:01:13,580 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:13,580 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 5
+2025-11-29 19:01:13,580 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 6
+2025-11-29 19:01:13,580 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:13,580 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 6
+2025-11-29 19:01:13,580 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:13,580 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 6
+2025-11-29 19:01:13,583 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:01:13,827 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 7
+2025-11-29 19:01:13,827 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:13,827 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 7
+2025-11-29 19:01:13,828 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:13,828 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 7
+2025-11-29 19:01:14,228 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/config.yaml
+2025-11-29 19:01:14,228 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 19:01:14,228 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:01:14,516 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: poll_exit
+2025-11-29 19:01:16,228 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:01:17,527 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 8
+2025-11-29 19:01:17,528 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: poll_exit
+2025-11-29 19:01:17,528 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:17,528 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 8
+2025-11-29 19:01:17,528 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:17,528 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 8
+2025-11-29 19:01:17,538 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 9
+2025-11-29 19:01:17,538 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:17,538 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 9
+2025-11-29 19:01:17,538 DEBUG   SenderThread:13988 [sender.py:send():336] send: artifact
+2025-11-29 19:01:18,229 INFO    Thread-12 :13988 [dir_watcher.py:_on_file_modified():295] file/dir modified: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:01:19,511 INFO    wandb-upload_1:13988 [upload_job.py:push():96] Uploaded file /home/nico/.local/share/wandb/artifacts/staging/tmpjp9bfg0g
+2025-11-29 19:01:19,517 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: keepalive
+2025-11-29 19:01:19,521 INFO    wandb-upload_0:13988 [upload_job.py:push():96] Uploaded file /home/nico/.local/share/wandb/artifacts/staging/tmpuq70u67a
+2025-11-29 19:01:20,915 INFO    SenderThread:13988 [sender.py:send_artifact():1428] sent artifact job-git_github.com_nkrygernelson_g3m-scale.git_src_gmmm_train.py - {'id': 'QXJ0aWZhY3Q6MjI5MDc4NTc1Nw==', 'digest': '4c998b6c413118f77cab29419883dac5', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjgwMzYwMzIyMg==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MjI4Nzk5NzQ3Nw==', 'versionIndex': 1}}, 'version': 'latest'}
+2025-11-29 19:01:20,915 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:20,915 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 9
+2025-11-29 19:01:20,915 INFO    SenderThread:13988 [dir_watcher.py:finish():365] shutting down directory watcher
+2025-11-29 19:01:21,230 INFO    SenderThread:13988 [dir_watcher.py:finish():395] scan: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files
+2025-11-29 19:01:21,230 INFO    SenderThread:13988 [dir_watcher.py:finish():409] scan save: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/config.yaml config.yaml
+2025-11-29 19:01:21,230 INFO    SenderThread:13988 [dir_watcher.py:finish():409] scan save: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log output.log
+2025-11-29 19:01:21,230 INFO    SenderThread:13988 [dir_watcher.py:finish():409] scan save: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/requirements.txt requirements.txt
+2025-11-29 19:01:21,231 INFO    SenderThread:13988 [dir_watcher.py:finish():409] scan save: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-metadata.json wandb-metadata.json
+2025-11-29 19:01:21,232 INFO    SenderThread:13988 [dir_watcher.py:finish():409] scan save: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json wandb-summary.json
+2025-11-29 19:01:21,236 INFO    SenderThread:13988 [dir_watcher.py:finish():409] scan save: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/media/images/val/images_62_121ab4c52b58af1b5d77.png media/images/val/images_62_121ab4c52b58af1b5d77.png
+2025-11-29 19:01:21,236 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 10
+2025-11-29 19:01:21,236 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:21,236 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 10
+2025-11-29 19:01:21,237 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:21,237 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 10
+2025-11-29 19:01:21,237 INFO    SenderThread:13988 [file_pusher.py:finish():164] shutting down file pusher
+2025-11-29 19:01:21,655 INFO    wandb-upload_2:13988 [upload_job.py:push():138] Uploaded file /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/requirements.txt
+2025-11-29 19:01:22,141 INFO    wandb-upload_0:13988 [upload_job.py:push():138] Uploaded file /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/output.log
+2025-11-29 19:01:22,159 INFO    wandb-upload_1:13988 [upload_job.py:push():138] Uploaded file /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/config.yaml
+2025-11-29 19:01:22,232 INFO    wandb-upload_3:13988 [upload_job.py:push():138] Uploaded file /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/files/wandb-summary.json
+2025-11-29 19:01:22,432 INFO    Thread-11 (_thread_body):13988 [sender.py:transition_state():587] send defer: 11
+2025-11-29 19:01:22,432 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:22,432 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 11
+2025-11-29 19:01:22,433 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:22,433 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 11
+2025-11-29 19:01:22,433 INFO    SenderThread:13988 [file_pusher.py:join():169] waiting for file pusher
+2025-11-29 19:01:22,433 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 12
+2025-11-29 19:01:22,433 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:22,433 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 12
+2025-11-29 19:01:22,433 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:22,433 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 12
+2025-11-29 19:01:22,635 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 13
+2025-11-29 19:01:22,635 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:22,635 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 13
+2025-11-29 19:01:22,635 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: status_report
+2025-11-29 19:01:22,636 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:22,636 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 13
+2025-11-29 19:01:22,636 INFO    SenderThread:13988 [sender.py:transition_state():587] send defer: 14
+2025-11-29 19:01:22,636 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: defer
+2025-11-29 19:01:22,636 INFO    HandlerThread:13988 [handler.py:handle_request_defer():170] handle defer: 14
+2025-11-29 19:01:22,636 DEBUG   SenderThread:13988 [sender.py:send():336] send: final
+2025-11-29 19:01:22,636 DEBUG   SenderThread:13988 [sender.py:send():336] send: footer
+2025-11-29 19:01:22,636 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: defer
+2025-11-29 19:01:22,636 INFO    SenderThread:13988 [sender.py:send_request_defer():583] handle sender defer: 14
+2025-11-29 19:01:22,636 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: poll_exit
+2025-11-29 19:01:22,637 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: poll_exit
+2025-11-29 19:01:22,637 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: server_info
+2025-11-29 19:01:22,637 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: get_summary
+2025-11-29 19:01:22,637 DEBUG   SenderThread:13988 [sender.py:send_request():363] send_request: server_info
+2025-11-29 19:01:22,638 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: sampled_history
+2025-11-29 19:01:22,808 INFO    MainThread:13988 [wandb_run.py:_footer_history_summary_info():3422] rendering history
+2025-11-29 19:01:22,808 INFO    MainThread:13988 [wandb_run.py:_footer_history_summary_info():3454] rendering summary
+2025-11-29 19:01:22,808 INFO    MainThread:13988 [wandb_run.py:_footer_sync_info():3380] logging synced files
+2025-11-29 19:01:22,809 DEBUG   HandlerThread:13988 [handler.py:handle_request():144] handle_request: shutdown
+2025-11-29 19:01:22,809 INFO    HandlerThread:13988 [handler.py:finish():842] shutting down handler
+2025-11-29 19:01:23,363 WARNING StreamThr :13988 [internal.py:is_dead():415] Internal process exiting, parent pid 13849 disappeared
+2025-11-29 19:01:23,363 ERROR   StreamThr :13988 [internal.py:wandb_internal():153] Internal process shutdown.
+2025-11-29 19:01:23,637 INFO    WriterThread:13988 [datastore.py:close():298] close: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-29_18-56-58/wandb/run-20251129_185714-g63oui09/run-g63oui09.wandb
+2025-11-29 19:01:23,808 INFO    SenderThread:13988 [sender.py:finish():1504] shutting down sender
+2025-11-29 19:01:23,808 INFO    SenderThread:13988 [file_pusher.py:finish():164] shutting down file pusher
+2025-11-29 19:01:23,808 INFO    SenderThread:13988 [file_pusher.py:join():169] waiting for file pusher

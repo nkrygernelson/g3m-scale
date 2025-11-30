@@ -1,0 +1,440 @@
+wandb_version: 1
+
+_wandb:
+  desc: null
+  value:
+    cli_version: 0.14.0
+    framework: lightning
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    m:
+    - 1: trainer/global_step
+      6:
+      - 3
+    python_version: 3.11.14
+    start_time: 1764539044.020726
+    t:
+      1:
+      - 1
+      - 9
+      - 50
+      - 55
+      - 77
+      2:
+      - 1
+      - 9
+      - 50
+      - 55
+      - 77
+      3:
+      - 7
+      - 15
+      - 23
+      4: 3.11.14
+      5: 0.14.0
+      8:
+      - 5
+antithetic_time_sampling:
+  desc: null
+  value: true
+callbacks/log_sampled_atoms/_target_:
+  desc: null
+  value: src_gmmm.utils.callback.LogSampledAtomsCallback
+callbacks/log_sampled_atoms/dirpath:
+  desc: null
+  value: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-30_22-43-30/samples
+callbacks/log_sampled_atoms/num_log_wandb:
+  desc: null
+  value: 25
+callbacks/log_sampled_atoms/save_atoms:
+  desc: null
+  value: true
+callbacks/model_checkpoint/_target_:
+  desc: null
+  value: pytorch_lightning.callbacks.ModelCheckpoint
+callbacks/model_checkpoint/auto_insert_metric_name:
+  desc: null
+  value: true
+callbacks/model_checkpoint/dirpath:
+  desc: null
+  value: /home/nico/code/g3m-scale/logs/qm9/runs/2025-11-30_22-43-30/checkpoints
+callbacks/model_checkpoint/every_n_epochs:
+  desc: null
+  value: 2
+callbacks/model_checkpoint/filename:
+  desc: null
+  value: '{epoch:03d}'
+callbacks/model_checkpoint/mode:
+  desc: null
+  value: max
+callbacks/model_checkpoint/monitor:
+  desc: null
+  value: val/molecule_stable
+callbacks/model_checkpoint/save_last:
+  desc: null
+  value: true
+callbacks/model_checkpoint/save_on_train_epoch_end:
+  desc: null
+  value: true
+callbacks/model_checkpoint/save_top_k:
+  desc: null
+  value: 3
+callbacks/model_checkpoint/save_weights_only:
+  desc: null
+  value: false
+callbacks/model_checkpoint/verbose:
+  desc: null
+  value: false
+ckpt_path:
+  desc: null
+  value: null
+datamodule/_target_:
+  desc: null
+  value: src_gmmm.data.datamodule.DataModule
+datamodule/num_val_subset:
+  desc: null
+  value: 2048
+datamodule/num_workers:
+  desc: null
+  value: 1
+datamodule/pin_memory:
+  desc: null
+  value: true
+datamodule/subset_seed:
+  desc: null
+  value: 42
+datamodule/train_batch_size:
+  desc: null
+  value: 64
+datamodule/train_path:
+  desc: null
+  value: /home/nico/code/g3m-scale/data/qm9/preprocessed/train.pt
+datamodule/transform/_target_:
+  desc: null
+  value: torch_geometric.transforms.Compose
+datamodule/transform/transforms:
+  desc: null
+  value:
+  - _target_: src_gmmm.data.transforms.FullyConnected
+  - _target_: src_gmmm.data.transforms.ZeroCoG
+    key: pos
+datamodule/val_batch_size:
+  desc: null
+  value: 256
+datamodule/val_path:
+  desc: null
+  value: /home/nico/code/g3m-scale/data/qm9/preprocessed/val.pt
+decoder:
+  desc: null
+  value:
+  - X
+  - H
+  - He
+  - Li
+  - Be
+  - B
+  - C
+  - N
+  - O
+  - F
+  - Ne
+  - Na
+  - Mg
+  - Al
+  - Si
+  - P
+  - S
+  - Cl
+  - Ar
+  - K
+  - Ca
+  - Sc
+  - Ti
+  - V
+  - Cr
+  - Mn
+  - Fe
+  - Co
+  - Ni
+  - Cu
+  - Zn
+  - Ga
+  - Ge
+  - As
+  - Se
+  - Br
+  - Kr
+  - Rb
+  - Sr
+  - Y
+  - Zr
+  - Nb
+  - Mo
+  - Tc
+  - Ru
+  - Rh
+  - Pd
+  - Ag
+  - Cd
+  - In
+  - Sn
+  - Sb
+  - Te
+  - I
+  - Xe
+  - Cs
+  - Ba
+  - La
+  - Ce
+  - Pr
+  - Nd
+  - Pm
+  - Sm
+  - Eu
+  - Gd
+  - Tb
+  - Dy
+  - Ho
+  - Er
+  - Tm
+  - Yb
+  - Lu
+  - Hf
+  - Ta
+  - W
+  - Re
+  - Os
+  - Ir
+  - Pt
+  - Au
+  - Hg
+  - Tl
+  - Pb
+  - Bi
+  - Po
+  - At
+  - Rn
+  - Fr
+  - Ra
+  - Ac
+  - Th
+  - Pa
+  - U
+  - Np
+  - Pu
+  - Am
+  - Cm
+  - Bk
+  - Cf
+  - Es
+  - Fm
+  - Md
+  - 'No'
+  - Lr
+  - Rf
+  - Db
+  - Sg
+  - Bh
+  - Hs
+  - Mt
+  - Ds
+  - Rg
+  - Cn
+  - Nh
+  - Fl
+  - Mc
+  - Lv
+  - Ts
+  - Og
+ema_decay:
+  desc: null
+  value: 0.999
+ema_start_step:
+  desc: null
+  value: 500
+extras:
+  desc: null
+  value: null
+lit_module/_target_:
+  desc: null
+  value: src_gmmm.lit.module.LitModule
+lit_module/antithetic_time_sampling:
+  desc: null
+  value: true
+lit_module/ema_decay:
+  desc: null
+  value: 0.999
+lit_module/ema_start_step:
+  desc: null
+  value: 500
+lit_module/loss_during_val:
+  desc: null
+  value: true
+lit_module/lr:
+  desc: null
+  value: 0.0002
+lit_module/metrics/_target_:
+  desc: null
+  value: src_gmmm.metrics.qm9.QM9Metrics
+lit_module/metrics/atom_types_str:
+  desc: null
+  value:
+  - H
+  - C
+  - N
+  - O
+  - F
+lit_module/metrics/json_path:
+  desc: null
+  value: /home/nico/code/g3m-scale/data/qm9/preprocessed/train_infos.json
+lit_module/metrics/max_num_atoms:
+  desc: null
+  value: 29
+lit_module/model/_target_:
+  desc: null
+  value: src_gmmm.model.diffusion.EquivariantDiffusion
+lit_module/model/diffusion_h:
+  desc: null
+  value: null
+lit_module/model/diffusion_pos/_target_:
+  desc: null
+  value: src_gmmm.model.continuous.ContinuousDiffusion
+lit_module/model/diffusion_pos/distribution/_target_:
+  desc: null
+  value: src_gmmm.model.distributions.DistributionGaussian
+lit_module/model/diffusion_pos/distribution/dim:
+  desc: null
+  value: 3
+lit_module/model/diffusion_pos/distribution/zero_cog:
+  desc: null
+  value: true
+lit_module/model/diffusion_pos/parameterization:
+  desc: null
+  value: x0
+lit_module/model/diffusion_pos/sde/_target_:
+  desc: null
+  value: src_gmmm.model.continuous.LinearLogSNRVPSDE
+lit_module/model/parameterization/_target_:
+  desc: null
+  value: src_gmmm.model.score.EquivariantParameterization
+lit_module/model/parameterization/encoder/_target_:
+  desc: null
+  value: src_gmmm.nn.encoder.EquivEncoder
+lit_module/model/parameterization/encoder/edge_embedding/_target_:
+  desc: null
+  value: src_gmmm.nn.layers.EdgeEmbedding
+lit_module/model/parameterization/encoder/edge_embedding/max_distance:
+  desc: null
+  value: 12.0
+lit_module/model/parameterization/encoder/edge_embedding/num_rbf_features:
+  desc: null
+  value: 64
+lit_module/model/parameterization/encoder/h_input_dim:
+  desc: null
+  value: 100
+lit_module/model/parameterization/encoder/hidden_dim:
+  desc: null
+  value: 128
+lit_module/model/parameterization/encoder/num_layers:
+  desc: null
+  value: 5
+lit_module/model/parameterization/encoder/smooth_h:
+  desc: null
+  value: false
+lit_module/model/parameterization/encoder/time_embedding/_target_:
+  desc: null
+  value: src_gmmm.nn.layers.FourierEmbedding
+lit_module/model/parameterization/encoder/time_embedding/in_features:
+  desc: null
+  value: 1
+lit_module/model/parameterization/encoder/time_embedding/out_features:
+  desc: null
+  value: 16
+lit_module/model/parameterization/readout/_target_:
+  desc: null
+  value: src_gmmm.nn.readout.DataPointReadout
+lit_module/model/parameterization/readout/hidden_dim:
+  desc: null
+  value: 128
+lit_module/model/parameterization/readout/parameterization:
+  desc: null
+  value: residual-pos
+lit_module/model/parameterization/readout/pred_h:
+  desc: null
+  value: false
+lit_module/model/parameterization/readout/pred_pos:
+  desc: null
+  value: true
+lit_module/model/parameterization/readout/zero_cog:
+  desc: null
+  value: true
+lit_module/n_integration_steps:
+  desc: null
+  value: 250
+lit_module/warm_up_steps:
+  desc: null
+  value: 100
+lit_module/with_ema:
+  desc: null
+  value: true
+loss_during_val:
+  desc: null
+  value: true
+loss_weights:
+  desc: null
+  value: null
+lr:
+  desc: null
+  value: 0.0002
+model/params/non_trainable:
+  desc: null
+  value: 0
+model/params/total:
+  desc: null
+  value: 3968542
+model/params/trainable:
+  desc: null
+  value: 3968542
+n_integration_steps:
+  desc: null
+  value: 250
+seed:
+  desc: null
+  value: 42
+tags:
+  desc: null
+  value:
+  - qm9
+task_name:
+  desc: null
+  value: null
+trainer/_target_:
+  desc: null
+  value: pytorch_lightning.Trainer
+trainer/accelerator:
+  desc: null
+  value: auto
+trainer/check_val_every_n_epoch:
+  desc: null
+  value: 2
+trainer/devices:
+  desc: null
+  value: 1
+trainer/gradient_clip_algorithm:
+  desc: null
+  value: norm
+trainer/gradient_clip_val:
+  desc: null
+  value: 1.0
+trainer/max_epochs:
+  desc: null
+  value: 1000
+trainer/num_sanity_val_steps:
+  desc: null
+  value: 0
+warm_up_steps:
+  desc: null
+  value: 100
+with_ema:
+  desc: null
+  value: true
