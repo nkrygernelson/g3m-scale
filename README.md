@@ -11,7 +11,7 @@ cd gm3m/
 
 # create an environment
 pip install uv
-uv venv .venv --python 3.11
+uv venv .venv --python 3.10
 source .venv/bin/activate
 
 
