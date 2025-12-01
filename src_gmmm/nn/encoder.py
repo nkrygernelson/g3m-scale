@@ -168,8 +168,8 @@ class FeatureAggregationLayer(InteractionLayer):
             + phi_vs[:, None, :] * unit_vectors[..., None]
         ) * edge[..., None]
 
-        s_coarse = scatter_sum(messages_s, dst_idx, dim=0, dim_size=n_super_nodes)
-        v_coarse = scatter_sum(messages_v, dst_idx, dim=0, dim_size=n_super_nodes)
+        s_coarse = scatter_mean(messages_s, dst_idx, dim=0, dim_size=n_super_nodes)
+        v_coarse = scatter_mean(messages_v, dst_idx, dim=0, dim_size=n_super_nodes)
 
 
         return s_coarse, v_coarse
@@ -202,7 +202,7 @@ class SpreadingLayer(InteractionLayer):
         phi_s, phi_vv, phi_vs = torch.split(Wphi, self.node_dim, dim=1)
         edge_gate = self.edge_inference_nn(phi_s)
 
-        # 2. Construct Messages
+     
         msg_s = phi_s * edge_gate
         msg_v = (
             v_coarse[src_idx] * phi_vv[:, None, :] 
@@ -211,8 +211,8 @@ class SpreadingLayer(InteractionLayer):
 
         # 3. SPREAD (Scatter Sum into Fine Nodes)
         # Output size is n_fine (N)
-        s_fine = scatter_sum(msg_s, dst_idx, dim=0, dim_size=n_fine)
-        v_fine = scatter_sum(msg_v, dst_idx, dim=0, dim_size=n_fine)
+        s_fine = scatter_mean(msg_s, dst_idx, dim=0, dim_size=n_fine)
+        v_fine = scatter_mean(msg_v, dst_idx, dim=0, dim_size=n_fine)
 
         return s_fine, v_fine
 
