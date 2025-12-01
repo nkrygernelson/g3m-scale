@@ -1,0 +1,14 @@
+# Folders
+/nn_coarsen/
+/nn/
+data/
+logs/
+__pycache__/
+
+# Files
+*.pyc
+*.swp
+*~
+.vscode
+.venv
+g3m.egg-info

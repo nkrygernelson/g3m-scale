@@ -21,7 +21,7 @@ max_num_atoms: 29
 # model-specific
 zero_cog: true
 num_layers: 5
-hidden_dim: 128
+hidden_dim: 256
 num_fourier_features: 16
 num_rbf_features: 64
 max_distance: 12.0 # QM9-specific
