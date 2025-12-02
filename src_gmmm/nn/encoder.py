@@ -132,10 +132,11 @@ class FeatureAggregationLayer(InteractionLayer):
     """
     Fine nodes to coarse nodes
     """
-    def __init__(self, node_dim: int, edge_dim: int):
+    def __init__(self, node_dim: int, edge_dim: int, norm:int=1e10):
         # Initialize the parent class (InteractionLayer)
         # This automatically sets up self.W, self.msg_nn, self.ln, etc.
         super().__init__(node_dim, edge_dim)
+        self.norm = norm
 
     def forward(
         self,
@@ -168,8 +169,8 @@ class FeatureAggregationLayer(InteractionLayer):
             + phi_vs[:, None, :] * unit_vectors[..., None]
         ) * edge[..., None]
 
-        s_coarse = scatter_mean(messages_s, dst_idx, dim=0, dim_size=n_super_nodes)
-        v_coarse = scatter_mean(messages_v, dst_idx, dim=0, dim_size=n_super_nodes)
+        s_coarse = scatter_mean(messages_s, dst_idx, dim=0, dim_size=n_super_nodes)/self.norm
+        v_coarse = scatter_mean(messages_v, dst_idx, dim=0, dim_size=n_super_nodes)/self.norm
 
 
         return s_coarse, v_coarse
@@ -178,8 +179,9 @@ class FeatureAggregationLayer(InteractionLayer):
 
 class SpreadingLayer(InteractionLayer):
   
-    def __init__(self, hid_dim: int, edge_dim: int):
+    def __init__(self, hid_dim: int, edge_dim: int, norm :int = 1e10):
         super().__init__(hid_dim, edge_dim)
+        self.norm = norm
 
     def forward(
         self,
@@ -211,8 +213,8 @@ class SpreadingLayer(InteractionLayer):
 
         # 3. SPREAD (Scatter Sum into Fine Nodes)
         # Output size is n_fine (N)
-        s_fine = scatter_mean(msg_s, dst_idx, dim=0, dim_size=n_fine)
-        v_fine = scatter_mean(msg_v, dst_idx, dim=0, dim_size=n_fine)
+        s_fine = scatter_mean(msg_s, dst_idx, dim=0, dim_size=n_fine)/self.norm
+        v_fine = scatter_mean(msg_v, dst_idx, dim=0, dim_size=n_fine)/self.norm
 
         return s_fine, v_fine
 
@@ -262,9 +264,11 @@ class EquivEncoder(nn.Module):
         self.updates = nn.ModuleList(
             [UpdateLayer(hidden_dim) for _ in range(num_layers)]
         )
-        self.aggregators = nn.ModuleList([FeatureAggregationLayer(hidden_dim, edge_embedding.out_features)for _ in range(num_layers)])
-        self.spreaders = nn.ModuleList([SpreadingLayer(hidden_dim, edge_embedding.out_features)for _ in range(num_layers)])
+        self.msg_norm = 1e4
+        self.aggregators = nn.ModuleList([FeatureAggregationLayer(hidden_dim, edge_embedding.out_features, norm=self.msg_norm)for _ in range(num_layers)])
+        self.spreaders = nn.ModuleList([SpreadingLayer(hidden_dim, edge_embedding.out_features, norm=self.msg_norm)for _ in range(num_layers)])
         self.k = k
+        
 
 
     def forward(
@@ -276,8 +280,8 @@ class EquivEncoder(nn.Module):
         edge_node_index: Optional[torch.Tensor],
     ) -> dict[str, torch.Tensor]:
 
-        t = self.time_embedding(t)
-        t_per_atom = t[node_index]
+        t_emb = self.time_embedding(t)
+        t_per_atom = t_emb[node_index]
         N_total = pos.shape[0]
         node_states_v = pos.new_zeros((*pos.shape, self.hidden_dim))
         node_states_s = self.node_embedding(h)
@@ -296,7 +300,7 @@ class EquivEncoder(nn.Module):
             node_index_i = node_index[mask]
             t_i = t[node_index_i].mean() #should be the same across the batch right
             n_i = pos_i.shape[0]
-            n_cg, k_i = linear_schedule(t=t_i,k=self.k, N=n_i)
+            n_cg, k_i = linear_schedule(t=1-t_i,k=self.k, N=n_i)
             cluster_idx_i, n_new = voxel_clustering(pos_i, n_cg)
             super_pos_i = scatter_mean(pos_i, cluster_idx_i, dim=0)
             edge_index_i = knn_graph(super_pos_i, k=k_i)
