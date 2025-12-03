@@ -4,7 +4,7 @@
 data/
 logs/
 __pycache__/
-
+outputs/
 # Files
 *.pyc
 *.swp
@@ -12,3 +12,4 @@ __pycache__/
 .vscode
 .venv
 g3m.egg-info
+*.tmp
