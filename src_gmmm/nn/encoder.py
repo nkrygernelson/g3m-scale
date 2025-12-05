@@ -5,7 +5,7 @@ from torch_geometric.nn import knn_graph
 import torch.nn as nn
 from torch_scatter import scatter_sum, scatter_mean
 from ..nn_coarsen.clustering import voxel_clustering
-from ..nn_coarsen.schedule import linear_schedule
+from ..nn_coarsen.schedule import linear_schedule, exp_schedule
 from ..nn.layers import EdgeEmbedding, EquivLayerNorm, FourierEmbedding
 
 
@@ -275,18 +275,20 @@ class SpreadingLayer(InteractionLayer):
 
 
 class FeatureSpreader(nn.Module):
-    def __init__(self, node_dim: int, edge_dim: int, layers: int = 3, ):
+    def __init__(self, node_dim: int, edge_dim: int, layers: int = 3):
         super().__init__()
-        self.layers = layers
-        self.update_layers = nn.ModuleList(
-            [UpdateLayer(node_dim) for _ in range(layers)]
-        )
-        self.spreading_layers = nn.ModuleList(
-            [SpreadingLayer(node_dim, edge_dim) for _ in range(layers)]
-        )
-        self.layer_norms = nn.ModuleList(
-            [nn.LayerNorm(node_dim) for _ in range(layers)]
-        )
+        # Note: 'layers' argument is kept for compatibility but ignored 
+        # to strictly enforce the single-update logic.
+        
+        # Single Spreading Layer (Coarse -> Fine)
+        self.spreading_layer = SpreadingLayer(node_dim, edge_dim)
+        
+        # Single Update Layer (Fine -> Fine)
+        self.update_layer = UpdateLayer(node_dim)
+        
+        # Single Layer Norm
+        self.layer_norm = nn.LayerNorm(node_dim)
+
     def forward(
         self,
         s_coarse: torch.Tensor,       
@@ -297,33 +299,20 @@ class FeatureSpreader(nn.Module):
         n_fine: int                   
     ):
         
-        # 1. Initialize DELTA accumulators (Start at Zero)
-        # We rename 's_fine' -> 'delta_s' to be semantically accurate.
-        delta_s = s_coarse.new_zeros((n_fine, s_coarse.shape[-1]))
-        delta_v = v_coarse.new_zeros((n_fine, *v_coarse.shape[1:]))
-
-        for i,(spread_layer, update_layer) in enumerate(zip(self.spreading_layers, self.update_layers)):
-        
-            proposal_s, proposal_v = spread_layer(
-                s_coarse,
-                v_coarse,
-                edge_states,
-                unit_vectors,
-                bipartite_edge_index,
-                n_fine
-            )
-
-            scale = 1.0 / (self.layers ** 0.5)
-
-            delta_s = delta_s + proposal_s*scale
-            delta_v = delta_v + proposal_v*scale
-            
     
-            delta_s, delta_v = update_layer(delta_s, delta_v)
-            delta_s = self.layer_norms[i](delta_s)
+        delta_s, delta_v = self.spreading_layer(
+            s_coarse,
+            v_coarse,
+            edge_states,
+            unit_vectors,
+            bipartite_edge_index,
+            n_fine
+        )
+
+        delta_s, delta_v = self.update_layer(delta_s, delta_v)
+        delta_s = self.layer_norm(delta_s)
 
         return delta_s, delta_v
-
 class EquivEncoder(nn.Module):
     def __init__(
         self,
@@ -407,13 +396,26 @@ class EquivEncoder(nn.Module):
             mask = (node_index==g_id)
             pos_i = pos[mask]
             node_index_i = node_index[mask]
-            t_i = t[node_index_i].mean() #should be the same across the batch right
+            t_i = t[node_index_i].mean() 
             n_i = pos_i.shape[0]
-            n_cg, k_i = linear_schedule(t=1-t_i,k=self.k, N=n_i)
-            cluster_idx_i, n_new = voxel_clustering(pos_i, n_cg)
-            super_pos_i = scatter_mean(pos_i, cluster_idx_i, dim=0)
-            edge_index_i = knn_graph(super_pos_i, k=k_i)
-            # reindex
+            n_cg, k_i = exp_schedule(t=1-t_i, k=self.k, N=n_i)
+            #boundary conditions
+            # If the schedule asks for N nodes (or more), identity mapping
+            if n_cg >= n_i:  
+                cluster_idx_i = torch.arange(n_i, device=pos.device)
+                n_new = n_i
+                super_pos_i = pos_i
+                edge_index_i = knn_graph(super_pos_i, k=k_i)
+            else:
+                cluster_idx_i, n_new = voxel_clustering(pos_i, n_cg)
+                super_pos_i = scatter_mean(pos_i, cluster_idx_i, dim=0)
+                
+                # Use k_i. Because n_new is small, k_i will be large (>= n_new),
+                # automatically resulting in a fully connected graph.
+                edge_index_i = knn_graph(super_pos_i, k=k_i)
+
+
+            # Reindex for batching
             global_cluster_idx = cluster_idx_i + global_super_node_offset
             global_edge_index = edge_index_i + global_super_node_offset
             list_super_pos.append(super_pos_i)
